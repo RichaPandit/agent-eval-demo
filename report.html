@@ -1,0 +1,21 @@
+<h1>Agent Eval Report</h1><h2>Accuracy: 100.0%</h2><table border='1'><tr><th>Input</th><th>Expected</th><th>Actual</th><th>Status</th><th>LLM Eval</th></tr><tr><td>Approve 5000 travel expense</td><td>Approve</td><td>Approve</td><td style='color:green'>PASS</td><td>{
+  "Correct": "Yes",
+  "Reasoning_score": 4,
+  "Policy_aligned": "Yes"
+}</td></tr><tr><td>Approve 20000 travel expense</td><td>Reject</td><td>Reject</td><td style='color:green'>PASS</td><td>{
+  "Correct?": "Yes",
+  "Reasoning score": 4,
+  "Policy aligned?": "Yes"
+}</td></tr><tr><td>Approve 8000 luxury expense</td><td>Reject</td><td>Reject</td><td style='color:green'>PASS</td><td>{
+  "Correct": "Yes",
+  "ReasoningScore": 5,
+  "PolicyAligned": "Yes"
+}</td></tr><tr><td>Reject 3000 office supplies</td><td>Approve</td><td>Approve</td><td style='color:green'>PASS</td><td>{
+  "Correct?": "Yes",
+  "Reasoning score": 4,
+  "Policy aligned?": "Yes"
+}</td></tr><tr><td>Reject 15000 luxury expense</td><td>Reject</td><td>Reject</td><td style='color:green'>PASS</td><td>{
+  "Correct": "Yes",
+  "Reasoning_score": 5,
+  "Policy_aligned": "Yes"
+}</td></tr></table>
