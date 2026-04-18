@@ -15,12 +15,6 @@ BASE_DIR = Path(__file__).resolve().parent        # evals/
 PROJECT_ROOT = BASE_DIR.parent                   # repo root
 
 # -------------------------------------------------
-# Helpers
-# -------------------------------------------------
-def extract_decision(text: str) -> str:
-    return "Approve" if "approve" in text.lower() else "Reject"
-
-# -------------------------------------------------
 # Load test cases
 # -------------------------------------------------
 with open(BASE_DIR / "test_cases.json", "r") as f:
@@ -41,13 +35,14 @@ for case in test_cases:
     expense_type = case.get("expense_type")
 
     # 1️. Run agent
-    agent_response = run_agent(input_text)
-    
-    actual_decision = agent_response["decision"]
-    raw_reason = agent_response["reason"]
+    agent_output = run_agent(input_text)
 
-    # 2️. Extract decision
-    actual_decision = extract_decision(agent_response)
+    # 2️. Extract decision and details
+    actual_decision = agent_output["decision"]
+    raw_reason = agent_output["reason"]
+    amount = agent_output["amount"]
+    expense_type = agent_output["expense_type"]
+
 
     # 3️. FORMAT RESPONSE for evaluation
     formatted_response = format_response(actual_decision, raw_reason)
