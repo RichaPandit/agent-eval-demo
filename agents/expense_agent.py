@@ -18,4 +18,9 @@ def extract_details(user_input):
 def run_agent(user_input):
     amount, expense_type = extract_details(user_input)
     decision, reason = evaluate_policy(amount, expense_type)
-    return format_response(decision, reason)
+    return {
+        "decision": decision,
+        "reason": reason,
+        "amount": amount,
+        "expense_type": expense_type
+    }

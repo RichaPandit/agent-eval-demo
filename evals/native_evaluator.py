@@ -1,21 +1,36 @@
+import json
 from client.foundry_client import call_llm
 
 def evaluate_response(input_text, response, expected):
-
     prompt = f"""
-You are an evaluator.
+You are an evaluator for an expense approval agent.
 
 Input: {input_text}
-Expected: {expected}
+Expected Decision: {expected}
 Agent Response: {response}
 
-Evaluate:
-1. Correct? (Yes/No)
-2. Reasoning score (1-5)
-3. Policy aligned? (Yes/No)
+Return STRICT JSON in this exact schema:
 
-Return JSON.
+{{
+  "correct": true | false,
+  "reasoning_score": 1 | 2 | 3 | 4 | 5,
+  "policy_aligned": true | false,
+  "rationale": "short explanation"
+}}
+
+Do not add extra text. JSON only.
     """
+
     messages = [{"role": "user", "content": prompt}]
-    
-    return call_llm(messages, temperature=0)
+    raw = call_llm(messages, temperature=0)
+
+    try:
+        return json.loads(raw)
+    except Exception:
+        # Fallback if model misbehaves
+        return {
+            "correct": False,
+            "reasoning_score": 1,
+            "policy_aligned": False,
+            "rationale": "Invalid JSON from evaluator"
+        }
