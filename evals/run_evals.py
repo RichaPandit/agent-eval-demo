@@ -1,18 +1,20 @@
 import json
 import sys
-import os
-
-sys.path.append(os.path.abspath(".."))
-
+from pathlib import Path
 from agents.expense_agent import run_agent
 from evals.native_evaluator import evaluate_response
+
+
+BASE_DIR = Path(__file__).resolve().parent   # evals/
+PROJECT_ROOT = BASE_DIR.parent               # repo root
+
 
 def extract_decision(text):
     if "approve" in text.lower():
         return "Approve"
     return "Reject"
 
-with open("test_cases.json", "r") as f:
+with open(BASE_DIR / "test_cases.json", "r") as f:
     test_cases = json.load(f)
 
 results = []
@@ -64,7 +66,7 @@ for r in results:
 
 html += "</table>"
 
-with open("../report.html", "w") as f:
+with open(PROJECT_ROOT / "report.html", "w") as f:
     f.write(html)
 
 sys.exit(status_flag)
