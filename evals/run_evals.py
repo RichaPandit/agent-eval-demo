@@ -4,8 +4,9 @@ from pathlib import Path
 
 from agents.expense_agent import run_agent
 from evals.native_evaluator import evaluate_response
-from policy_checker import evaluate_policy
-from formatter import format_response
+
+from tools.policy_checker import evaluate_policy
+from tools.formatter import format_response
 
 # -------------------------------------------------
 # Paths
