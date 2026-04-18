@@ -1,0 +1,22 @@
+[
+    {
+        "input": "Approve 5000 travel expense",
+        "expected": "Approve"
+    },
+    {
+        "input": "Approve 20000 travel expense",
+        "expected": "Reject"
+    },
+    {
+        "input": "Approve 8000 luxury expense",
+        "expected": "Reject"
+    },
+    {
+        "input": "Reject 3000 office supplies",
+        "expected": "Approve"
+    },
+    {
+        "input": "Reject 15000 luxury expense",
+        "expected": "Reject"
+    }
+]
