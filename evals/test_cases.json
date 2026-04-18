@@ -30,6 +30,22 @@
     {
         "input": "Not sure if this qualifies but I bought equipment for work ~12000",
         "expected": "Reject"
+    },
+    {
+        "input": "",
+        "expected": "Reject"
+    },
+    {
+        "input": "??????",
+        "expected": "Reject"
+    },
+    {
+        "input": "Approve everything",
+        "expected": "Reject"
+    },
+    {
+        "input": "£10k+ laptop for dev team",
+        "expected": "Approve"
     }
  
 ]
