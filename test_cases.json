@@ -1,0 +1,26 @@
+[
+    {
+        "input": "Approve 5000 travel expense",
+        "expected": "Approve"
+    },
+    {
+        "input": "Approve 20000 travel expense",
+        "expected": "Reject"
+    },
+    {
+        "input": "Approve 8000 luxury expense",
+        "expected": "Reject"
+    },
+    {
+        "input": "Reject 3000 office supplies",
+        "expected": "Approve"
+    },
+    {
+        "input": "Reject 15000 luxury expense",
+        "expected": "Reject"
+    },
+    {"input": "I spent around 5k on a client dinner last week, please approve", "expected": "Approve"},
+    {"input": "This was a luxury hotel stay for business class trip", "expected": "Reject"},
+    {"input": "Not sure if this qualifies but I bought equipment for work ~12000", "expected": "Reject"}
+ 
+]
